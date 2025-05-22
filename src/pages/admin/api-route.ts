@@ -1,2 +1,2 @@
-const ApiRoute = 'http://localhost:5000/'
+const ApiRoute = 'https://jo-blogger-app-api-route.onrender.com/'
 export default ApiRoute
