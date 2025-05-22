@@ -1,5 +1,5 @@
 import SideNavigation from "./_disabled-routes/side-navigation"
-import ApiRoute from "./api-route"
+import ApiRoute from "../../lib/api-route"
 import { useState } from "react"
 import { Toaster , toast } from "react-hot-toast"
 export default function AddingPost() {

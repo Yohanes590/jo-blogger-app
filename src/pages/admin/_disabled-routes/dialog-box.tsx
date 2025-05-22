@@ -1,7 +1,7 @@
 "use client"
 import { Toaster, toast } from "react-hot-toast"
 import Cookies from "js-cookie"
-import ApiRoute from "../api-route"
+import ApiRoute from "../../../lib/api-route"
 type PropType = {
       postId:string
 }

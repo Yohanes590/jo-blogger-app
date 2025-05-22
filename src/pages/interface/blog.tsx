@@ -2,9 +2,12 @@ import NavigationBar from "../_disabled-routes/nav-bar"
 import { MdOutlineEmail } from "react-icons/md";
 import { CiTimer } from "react-icons/ci";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-import ApiRoute from "../admin/api-route";
+import ApiRoute from "../../lib/api-route";
 import { useEffect, useState } from "react";
-import { Toaster,toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
+import Image from 'next/image';
+import Link from 'next/link';
+
 type post = {
       DateTime: string,
       ImagePath: string,
@@ -43,9 +46,9 @@ export default function Blog() {
                   {
                         MapObj.map(items => {
                               return (
-                                    <div key={items._id} className="blog-card overflow-hidden bg-[#07aa0715] flex gap-5 flex-wrap border-[#00ff95] rounded-[20px] border-1 w-[80%] h-auto ">
+                                    <div key={items._id} className="blog-card overflow-hidden bg-[#07aa0715] flex gap-5 flex-wrap border-[#00ff95] rounded-[20px] border-1 w-[75%] h-auto ">
                                     <div className="image-section">
-                                    <img className="w-[500px] h-[100%] object-cover" src={items.ImagePath} />
+                                    <Image width={600} height={500}alt="post-blog-image" src={items.ImagePath} />
                                     </div>
             
                                     <div className="post-dis w-[600px] mt-[30px]"><br/>
@@ -56,10 +59,10 @@ export default function Blog() {
                                           </div>
                                           <hr className="mt-[20px] border-[#949393]" />
                                           <div className="contact-info mt-[20px] text-[#00ffbf] flex justify-center gap-10 ">
-                                                <a href="mailto:jplussince34@gmail.com"><MdOutlineEmail className="cursor-pointer" size={30} /></a>
-                                               <a href="http://github.com/yohanes590/"><FaGithub className="cursor-pointer" size={30} /></a>
-                                               <a href="https://t.me/Mrx_Man21"><FaInstagram className="cursor-pointer" size={30}/></a>
-                                               <a href="https://www.linkedin.com/in/yohanes-mulugeta-12010532b/"> <FaLinkedin className="cursor-pointer" size={30}/></a>
+                                                <Link href="mailto:jplussince34@gmail.com"><MdOutlineEmail className="cursor-pointer" size={30} /></Link>
+                                               <Link href="http://github.com/yohanes590/"><FaGithub className="cursor-pointer" size={30} /></Link>
+                                               <Link href="https://t.me/Mrx_Man21"><FaInstagram className="cursor-pointer" size={30}/></Link>
+                                               <Link href="https://www.linkedin.com/in/yohanes-mulugeta-12010532b/"> <FaLinkedin className="cursor-pointer" size={30}/></Link>
                                           </div>
                                     </div>   
                               </div>

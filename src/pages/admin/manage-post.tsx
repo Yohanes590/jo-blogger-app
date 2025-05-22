@@ -2,11 +2,12 @@ import SideNavigation from "./_disabled-routes/side-navigation";
 import { CiTimer } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { FaEye ,FaRegEyeSlash} from "react-icons/fa";
-import ApiRoute from "./api-route";
+import ApiRoute from "../../lib/api-route";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import DialogDemo from "./_disabled-routes/dialog-box";
-import { Toaster ,toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
+import Image from 'next/image';
 export default function ManagePost() {
       type post = {
             DateTime: string,
@@ -59,7 +60,7 @@ export default function ManagePost() {
                                     
                                     <div key={items._id} className="blog-card mt-[20px] overflow-hidden bg-[#07aa0715] flex gap-5 border-[#00ff95] rounded-[20px] border-1 w-[70%] ml-[100px] h-[auto] ">
                                     <div className="image-section">
-                                    <img className="w-[500px] h-[100%] object-cover" src={items.ImagePath} />
+                                    <Image width={600} height={500}alt="post-blog-image" className="w-[500px] h-[100%] object-cover" src={items.ImagePath} />
                                     </div>
             
                                     <div className="post-dis w-[600px] mt-[30px]"><br/>

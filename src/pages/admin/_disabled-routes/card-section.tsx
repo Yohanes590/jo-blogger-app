@@ -1,9 +1,9 @@
 import { BsFilePostFill } from "react-icons/bs";
 import { RiGitRepositoryPrivateLine } from "react-icons/ri";
 import { FcAdvertising } from "react-icons/fc";
-import { ChangingRoute } from "./change-routes";
+import ChangingRoute  from "./change-routes";
 import { useEffect } from "react";
-import ApiRoute from "../api-route";
+import ApiRoute from "../../../lib/api-route";
 import Cookies from "js-cookie";
 import { Toaster , toast } from "react-hot-toast";
 export default function Card() {
@@ -36,7 +36,7 @@ export default function Card() {
      }
     }
     CountPost()
-  },[])
+  }, [])
   return (<>
         <Toaster/>
         <div className="card-section relative w-full h-screen flex justify-center items-center gap-5">
