@@ -4,6 +4,7 @@ import { CiTimer } from "react-icons/ci";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
 import ApiRoute from "../admin/api-route";
 import { useEffect, useState } from "react";
+import { Toaster,toast } from "react-hot-toast";
 type post = {
       DateTime: string,
       ImagePath: string,
@@ -16,6 +17,7 @@ type post = {
 export default function Blog() {
       const [ MapObj , setMapObj ] = useState<post[]>([])
       useEffect(() => {
+            const loadingAnime = toast.loading("fetch post ..")
             const fetchPost = async():Promise<void> => {
                   const ServerResponse = await fetch(ApiRoute + "public-post", {
                         method: "post",
@@ -24,12 +26,17 @@ export default function Blog() {
                         },
                   })
                   const serverChangedResponse = await ServerResponse.json()
-                  console.log(serverChangedResponse)
                   setMapObj(serverChangedResponse)
+                  if (serverChangedResponse.status == 500) {
+                        toast.error("server error")
+                  } else {
+                        toast.dismiss(loadingAnime)
+                  }
             }
             fetchPost()
       }, [])
       return (<>
+            <Toaster/>
             <NavigationBar />
             <div className="blog-section pt-[200px] w-full h-auto flex justify-center flex-wrap  items-center">
 
