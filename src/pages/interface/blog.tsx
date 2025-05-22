@@ -2,7 +2,7 @@ import NavigationBar from "../_disabled-routes/nav-bar"
 import { MdOutlineEmail } from "react-icons/md";
 import { CiTimer } from "react-icons/ci";
 import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa";
-import ApiRoute from "../../lib/api-route";
+import ApiRoute from "@/lib/api-route";
 import { useEffect, useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import Image from 'next/image';
@@ -29,7 +29,8 @@ export default function Blog() {
                         },
                   })
                   const serverChangedResponse = await ServerResponse.json()
-                  setMapObj(serverChangedResponse)
+                        console.log(serverChangedResponse)
+                        setMapObj(serverChangedResponse)
                   if (serverChangedResponse.status == 500) {
                         toast.error("server error")
                   } else {
@@ -41,12 +42,12 @@ export default function Blog() {
       return (<>
             <Toaster/>
             <NavigationBar />
-            <div className="blog-section pt-[200px] w-full h-auto flex justify-center flex-wrap  items-center">
+            <div className="blog-section pt-[160px] w-full h-auto flex justify-center flex-wrap  items-center">
 
                   {
                         MapObj.map(items => {
                               return (
-                                    <div key={items._id} className="blog-card overflow-hidden bg-[#07aa0715] flex gap-5 flex-wrap border-[#00ff95] rounded-[20px] border-1 w-[75%] h-auto ">
+                                    <div key={items._id} className="blog-card mt-[40px] overflow-hidden bg-[#07aa0715] flex gap-5 flex-wrap border-[#00ff95] rounded-[20px] border-1 w-[75%] h-auto ">
                                     <div className="image-section">
                                     <Image width={600} height={500}alt="post-blog-image" src={items.ImagePath} />
                                     </div>

@@ -2,7 +2,7 @@ import SideNavigation from "./_disabled-routes/side-navigation";
 import { CiTimer } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { FaEye ,FaRegEyeSlash} from "react-icons/fa";
-import ApiRoute from "../../lib/api-route";
+import ApiRoute from "@/lib/api-route";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
 import DialogDemo from "./_disabled-routes/dialog-box";
@@ -10,7 +10,7 @@ import { Toaster, toast } from "react-hot-toast";
 import Image from 'next/image';
 export default function ManagePost() {
       type post = {
-            DateTime: string,
+            DateTime: string, 
             ImagePath: string,
             PostTitle: string,
             visibility: string,

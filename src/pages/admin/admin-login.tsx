@@ -7,7 +7,7 @@ import {
       InputOTPSeparator,
       InputOTPSlot,
 } from "@/components/ui/input-otp" 
-import ApiRoute from "../../lib/api-route";
+import ApiRoute from "@/lib/api-route";
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 export default function AdminLogin() {

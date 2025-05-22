@@ -239,9 +239,8 @@ server.post("/counting-post", async(req, res) => {
 
 server.post("/public-post", async(req,res) => {
       try {
-            const findingData = await PostData.find({})
-            const pickPublic = findingData.find(publicData => publicData.visibility === 'public')
-            res.json([pickPublic])
+            const findingData = await PostData.find({ visibility: 'public' })
+            res.json(findingData)
       } catch (error) {
             res.json({message:"error",status:500})
       }

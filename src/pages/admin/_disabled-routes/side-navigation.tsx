@@ -5,7 +5,7 @@ import { IoLogOutOutline } from "react-icons/io5";
 import { SiVirustotal } from "react-icons/si";
 import  ChangingRoute  from "./change-routes";
 import { Toaster , toast } from "react-hot-toast";
-import ApiRoute from "../../../lib/api-route";
+import ApiRoute from "@/lib/api-route";
 import Cookies from "js-cookie"
 import LoadingAnimation from "./loading-anime";
 import { useEffect } from "react";

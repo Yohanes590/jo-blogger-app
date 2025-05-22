@@ -1,10 +1,10 @@
 "use client"
 import { Toaster, toast } from "react-hot-toast"
 import Cookies from "js-cookie"
-import ApiRoute from "../../../lib/api-route"
+import ApiRoute from "@/lib/api-route"
 type PropType = {
       postId:string
-}
+} 
 export default function DialogDemo(Id:PropType) {
       const cancelPost = () => {
             const postElement = document.querySelector(".dialog-box") as HTMLElement 
