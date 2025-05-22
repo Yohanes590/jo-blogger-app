@@ -16,7 +16,7 @@ const cookieParser = require('cookie-parser');
 server.use(cookieParser());
 const SendOtp = require("./sending-otp")
 server.use(cors({
-      origin: "https://jo-blogger-app.vercel.app",
+      origin: "https://jo-blogger.vercel.app",
 }))
 
 const TempStorage = multer.diskStorage({
