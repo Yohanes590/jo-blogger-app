@@ -11,7 +11,8 @@ import ApiRoute from "@/lib/api-route";
 import React, { useState } from "react";
 import Cookies from "js-cookie";
 export default function AdminLogin() {
-
+      const [disableButton, setdisable] = useState<boolean>(false)
+      const [otpButton , setOtpButton ]= useState<boolean>(false)
       const [email, setEmail] = useState<string>("")
       const [password , setPassword] = useState<string>("")
       const LoginIntoServer = async ():Promise<void> => {
@@ -20,6 +21,7 @@ export default function AdminLogin() {
             } else if (password == "") {
              toast.error("please insert password")
             } else {
+                  setdisable(true)
                   const LoadingToast = toast.loading("Authenticating..")
                   const LoginIntoServer = await fetch(ApiRoute + "login-admin", {
                         method: "post",
@@ -34,6 +36,7 @@ export default function AdminLogin() {
                   const ChangeToJson = await LoginIntoServer.json()
                   if (ChangeToJson.status === 200) {
                         toast.dismiss(LoadingToast)
+                        setdisable(false)
                         toast.success("check your inbox")
                         setTimeout(() => {
                               openVerWindow()
@@ -41,10 +44,12 @@ export default function AdminLogin() {
                         }, 2000);
                   } else if (ChangeToJson.status === 400) {
                         toast.dismiss(LoadingToast)
+                        setdisable(true)
                         toast.error(ChangeToJson.message)
                   } else if (ChangeToJson.status === 500) {
                         toast.dismiss(LoadingToast)
                         toast.error(ChangeToJson.message)
+                        setdisable(true)
                   } else {
                         toast.dismiss(LoadingToast)
                         toast.error("wrong request")
@@ -57,6 +62,7 @@ export default function AdminLogin() {
 
       const [ getOtp , setOtp ] = useState<string>('')
       const sendOtp = async (): Promise<void> => {
+            setOtpButton(true)
             console.log(getOtp)
             const loadingRequest = toast.loading("Authenticating OTP...")
             const CheckOtp = await fetch(ApiRoute + "access-otp", {
@@ -69,8 +75,8 @@ export default function AdminLogin() {
                   })
             })
             const changingOTP = await CheckOtp.json()
-            console.log(changingOTP)
             if (changingOTP.status === 200) {
+                  setOtpButton(false)
                   toast.dismiss(loadingRequest)
                   toast.success("Login success")
                   Cookies.set("access-token",changingOTP.AccessToken)
@@ -79,6 +85,7 @@ export default function AdminLogin() {
                         window.location.href="/admin/admin-dashboard"
                   }, 3000);
             } else {
+                  setOtpButton(true)
                   toast.dismiss(loadingRequest)
                   toast.error("Can't authenticate user")
             }
@@ -121,7 +128,7 @@ export default function AdminLogin() {
                   <InputOTPSlot index={5} />
                   </InputOTPGroup>
                               </InputOTP>
-                              <button onClick={sendOtp} className="mt-[20px] w-[250px] h-[40px] rounded-[5px] cursor-pointer bg-[#16b87496]">Verify</button><br/>
+                              <button disabled={otpButton} onClick={sendOtp} className="mt-[20px] w-[250px] h-[40px] rounded-[5px] cursor-pointer bg-[#16b87496]">Verify</button><br/>
                               <button className="mt-[20px] w-[250px] h-[40px] rounded-[5px] cursor-pointer bg-[#ff5555]" onClick={openVerWindow}>Cancel</button>
                         </div>
             </div>     
@@ -136,7 +143,7 @@ export default function AdminLogin() {
                         <div className="input-container grid">
                         <input onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setEmail(e.target.value)} id="email" type="text" className="outline-none mt-[20px] rounded-[5px] h-[50px] w-[500px] pl-[20px] bg-[#0a490a] " placeholder="Email" />
                         <input onChange={(e:React.ChangeEvent<HTMLInputElement>)=>setPassword(e.target.value)} id="password" type="password" className="outline-none mt-[20px] rounded-[5px] h-[50px] w-[500px] pl-[20px] bg-[#0a490a] " placeholder="Password" />
-                        <button onClick={LoginIntoServer} className="flex justify-center items-center gap-4 mt-[20px] w-[500px] rounded-[5px] transition duration-200 cursor-pointer hover:bg-[#58d39fab] bg-[#00ff95ab] h-[50px]">Login<BiSolidLogInCircle/></button>
+                        <button disabled={disableButton} onClick={LoginIntoServer} className="flex justify-center items-center gap-4 mt-[20px] w-[500px] rounded-[5px] transition duration-200 cursor-pointer hover:bg-[#58d39fab] bg-[#00ff95ab] h-[50px]">Login<BiSolidLogInCircle/></button>
                         </div>                   
                   </div>
             </div>      
