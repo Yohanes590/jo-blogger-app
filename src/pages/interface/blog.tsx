@@ -49,7 +49,7 @@ export default function Blog() {
                               return (
                                     <div key={items._id} className="blog-card mt-[40px] overflow-hidden bg-[#07aa0715] flex gap-5 flex-wrap border-[#00ff95] rounded-[20px] border-1 w-[75%] h-auto ">
                                     <div className="image-section">
-                                    <Image width={600} className="object-cover" height={500}alt="post-blog-image" src={items.ImagePath} />
+                                    <Image width={600} height={500}alt="post-blog-image" className="w-[500px] h-[100%] object-cover" src={items.ImagePath} />
                                     </div>
             
                                     <div className="post-dis w-[600px] mt-[30px]"><br/>
@@ -71,7 +71,7 @@ export default function Blog() {
                         })
                        
             }
-                  
+                   
 
             </div>
       </>)
