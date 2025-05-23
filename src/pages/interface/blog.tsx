@@ -29,8 +29,10 @@ export default function Blog() {
                         },
                   })
                   const serverChangedResponse = await ServerResponse.json()
-                        console.log(serverChangedResponse)
-                        setMapObj(serverChangedResponse)
+                  console.log(serverChangedResponse)
+                  const latestUpdate = serverChangedResponse.reverse()
+                        toast.dismiss(loadingAnime)
+                        setMapObj(latestUpdate)
                   if (serverChangedResponse.status == 500) {
                         toast.error("server error")
                   } else {

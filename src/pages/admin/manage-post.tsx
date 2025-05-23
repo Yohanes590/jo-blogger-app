@@ -36,8 +36,9 @@ export default function ManagePost() {
                         })
                   })
                   const JsonResponse = await RequestServer.json()
+                  const latestUpdate =JsonResponse.reverse()
                   toast.dismiss(LoadingPost)
-                  setMapPost(JsonResponse)
+                  setMapPost(latestUpdate)
             }
             FetchPostAdminSide()
       }, [])
