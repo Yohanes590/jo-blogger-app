@@ -65,7 +65,7 @@ export default function Blog() {
                                                 <Link href="mailto:jplussince34@gmail.com"><MdOutlineEmail className="cursor-pointer" size={30} /></Link>
                                                <Link href="http://github.com/yohanes590/"><FaGithub className="cursor-pointer" size={30} /></Link>
                                                <Link href="https://www.instagram.com/mrx_man21/"><FaInstagram className="cursor-pointer" size={30}/></Link>
-                                               <Link href="https://www.linkedin.com/in/yohanes-mulugeta-12010532b/"> <FaLinkedin className="cursor-pointer" size={30}/></Link>
+                                               <Link href="https://www.linkedin.com/in/yohanes-mulugeta21/"> <FaLinkedin className="cursor-pointer" size={30}/></Link>
                                           </div>
                                     </div>   
                               </div>
